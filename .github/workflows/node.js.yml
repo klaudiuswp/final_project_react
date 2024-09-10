@@ -1,17 +1,19 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# This workflow will do a clean installation of node dependencies, cache/restore them,
+# build the source code and run tests across different versions of Node.js
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "main"
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,11 +23,33 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      name: Checkout code
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+
+    - name: Install dependencies
+      run: npm ci
+      # `npm ci` is preferred over `npm install` for CI environments as it installs
+      # exactly what's specified in package-lock.json and is faster.
+
+    - name: Build
+      run: npm run build --if-present
+      # `--if-present` makes sure the build script is only run if it exists in package.json.
+
+    - name: Run tests
+      run: npm test
+      # Ensure you have a test script defined in your package.json.
+
+    - name: Cache node modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
+          ${{ runner.os }}-node-${{ matrix.node-version }}-
+          ${{ runner.os }}-node-
