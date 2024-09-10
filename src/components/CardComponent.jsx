@@ -49,10 +49,11 @@ export default function CardComponent() {
             {movies.Search.map((movie) => (
               <button
                 type="button"
-                key={movie.imdbID} // Unique key prop for each item
+                key={movie.imdbID}
                 onClick={(event) => handleMovieClick(event, movie.imdbID)}
                 className="text-decoration-none border-0 bg-transparent"
                 style={{ cursor: "pointer" }} >
+
                 <div className="col" key={movie.imdbID}>
                   <div className="card h-100">
                     <div className="ratio ratio-1x1 overflow-hidden">
