@@ -22,7 +22,7 @@ export default function CardComponent() {
 
   const handleMovieClick = (event, movieId) => {
     console.log(movieId);
-    event.preventDefault(); 
+    event.preventDefault();
     axios
       .get(`http://www.omdbapi.com/?apikey=b6d0372c&i=${movieId}`)
       .then((response) => {
@@ -47,8 +47,12 @@ export default function CardComponent() {
         <div>
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
             {movies.Search.map((movie) => (
-              <a href="" style={{ textDecoration: 'inherit' }} key={movie.imdbID}
-              onClick={(event) => handleMovieClick(event, movie.imdbID)}>
+              <button
+                type="button"
+                key={movie.imdbID} // Unique key prop for each item
+                onClick={(event) => handleMovieClick(event, movie.imdbID)}
+                className="text-decoration-none border-0 bg-transparent"
+                style={{ cursor: "pointer" }} >
                 <div className="col" key={movie.imdbID}>
                   <div className="card h-100">
                     <div className="ratio ratio-1x1 overflow-hidden">
@@ -64,7 +68,7 @@ export default function CardComponent() {
                     </div>
                   </div>
                 </div>
-              </a>
+              </button>
             ))}
           </div>
 
