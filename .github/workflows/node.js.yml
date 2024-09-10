@@ -1,4 +1,4 @@
-name: finalProject CI
+name: final_project_react
 
 on:
   push:
