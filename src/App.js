@@ -1,6 +1,5 @@
 import './App.css';
 import {
-  CardComponent,
   NavbarComponent,
   MainComponent
 } from './components';
@@ -10,7 +9,6 @@ function App() {
     <div className="App">
       <NavbarComponent/>
       <MainComponent/>
-      {/* <CardComponent/> */}
     </div>
   );
 }
