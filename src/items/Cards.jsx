@@ -22,7 +22,9 @@ export default function Cards() {
         <>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
                 {movies.length === 0 ? (
-                    <p>No movies found. Please try a different search term.</p>
+                    <div className="col w-100 d-flex justify-content-center align-items-center">
+                        <p className="text-center">Movie tidak ditemukkan</p>
+                    </div>
                 ) : movies.Search.map((movie) => (
                     <button
                         type="button"
@@ -41,7 +43,7 @@ export default function Cards() {
                                         style={{ objectFit: "cover", height: "100%" }}
                                     />
                                 </div>
-                                <div className="card-img-overlay p-0" style={{ height: '100%'}}>
+                                <div className="card-img-overlay p-0" style={{ height: '100%' }}>
                                     <div className="d-flex align-items-end p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', height: '40px', bottom: '0', width: '100%', position: 'absolute' }}>
                                         <p className="card-title fw-bold text-light text-truncate m-0">{movie.Title}</p>
                                     </div>
@@ -51,7 +53,7 @@ export default function Cards() {
                         </div>
                     </button>
                 ))}
-            </div>
+            </div >
         </>
     )
 };
