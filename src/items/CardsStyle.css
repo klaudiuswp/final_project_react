@@ -1,0 +1,28 @@
+.card-button:hover .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transform: scale(1.02); /* Slightly enlarge the card */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.card-button:hover .card-img-top {
+    filter: brightness(1.1); /* Brighten the image */
+}
+
+/* Media queries for responsive design */
+@media (max-width: 576px) {
+    .responsive-height {
+        height: 500px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+    .responsive-height {
+        height: 350px;
+    }
+}
+
+@media (min-width: 992px) {
+    .responsive-height {
+        height: 230px;
+    }
+}

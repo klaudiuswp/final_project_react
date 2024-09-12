@@ -1,4 +1,4 @@
-import axios from "axios";
+import React, { useEffect } from "react";
 import {
     useSelector,
     useDispatch
@@ -7,41 +7,45 @@ import {
     openModal,
     changeMovie
 } from "../store/action";
+import './CardsStyle.css';
 
-export default function Card() {
-    const dispatch = useDispatch()
+export default function Cards() {
+    const dispatch = useDispatch();
+    const movies = useSelector((state) => state.movies);
+
     const handleMovieClick = (event, movieId) => {
-        console.log(movieId);
         event.preventDefault();
-        dispatch(openModal())
-        dispatch(changeMovie(movieId))
+        dispatch(openModal());
+        dispatch(changeMovie(movieId));
     };
-    const movies = useSelector(state => state.movies)
     return (
         <>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
-                {movies.length === 0 ?  (
-                    <p>Wait for Content ...</p>
-                ): movies.Search.map((movie) => (
+                {movies.length === 0 ? (
+                    <p>No movies found. Please try a different search term.</p>
+                ) : movies.Search.map((movie) => (
                     <button
                         type="button"
                         key={movie.imdbID}
                         onClick={(event) => handleMovieClick(event, movie.imdbID)}
-                        className="text-decoration-none border-0 bg-transparent"
+                        className="text-decoration-none border-0 bg-transparent card-button"
                         style={{ cursor: "pointer" }} >
-                
+
                         <div className="col" key={movie.imdbID}>
                             <div className="card h-100">
-                                <div className="ratio ratio-1x1 overflow-hidden">
+                                <div className="overflow-hidden responsive-height">
                                     <img
                                         src={movie.Poster}
                                         className="card-img-top img-fluid"
                                         alt={movie.Title}
-                                        style={{ objectFit: "cover" }}
+                                        style={{ objectFit: "cover", height: "100%" }}
                                     />
                                 </div>
-                                <div className="card-body p-3" style={{ backgroundColor: 'rgba(251, 67, 0, 1)' }}>
-                                    <p className="card-title fw-bold text-light text-truncate m-0">{movie.Title}</p>
+                                <div className="card-img-overlay p-0" style={{ height: '100%'}}>
+                                    <div className="d-flex align-items-end p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', height: '40px', bottom: '0', width: '100%', position: 'absolute' }}>
+                                        <p className="card-title fw-bold text-light text-truncate m-0">{movie.Title}</p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

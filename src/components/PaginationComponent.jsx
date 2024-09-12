@@ -1,8 +1,3 @@
-import {
-    // Link, 
-    // useLocation, 
-    // Outlet 
-} from 'react-router-dom';
 const NavbarComponent = () => (
     <>
         <nav aria-label="Page navigation sticky-bottom">

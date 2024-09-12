@@ -22,10 +22,10 @@ export default function ModalDetailMovie() {
             <div className="modal fade show d-block" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title text-start">{selectedMovie.Title}</h5>
+                        <div className="modal-header bg-secondary">
+                            <h5 className="modal-title text-start text-light">{selectedMovie.Title}</h5>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body bg-body-secondary text-dark">
                             <img
                                 src={selectedMovie.Poster}
                                 className="img-fluid"
@@ -36,7 +36,7 @@ export default function ModalDetailMovie() {
                             <p className="m-0"><strong>Genre:</strong> {selectedMovie.Genre}</p>
                             <p className="m-0"><strong>Plot:</strong> {selectedMovie.Plot}</p>
                         </div>
-                        <div className="modal-footer">
+                        <div className="modal-footer bg-body-secondary">
                             <Link to={`/movie/${selectedMovie.imdbID}`} className="btn btn-primary w-100">Check Movie</Link>
                             <button type="button" className="btn btn-danger w-100" onClick={handleCloseModal}>
                                 Close

@@ -7,9 +7,9 @@ import {
 
 export default function MainPage() {
     return (
-        <>
+        <div className='bg-dark flex-column min-vh-100 text-white'>
             <NavbarComponent />
             <Outlet/>
-        </>
+        </div>
     )
 }

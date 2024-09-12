@@ -1,8 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ModalDetailMovie from '../items/ModalDetailMovie'
 import getMovies from "../store/action";
-import Card from '../items/Card'
+import Cards from '../items/Cards'
 import {
   useSelector,
   useDispatch
@@ -11,19 +10,23 @@ import {
   useParams
 } from "react-router-dom";
 
-export default function CardComponent() {
+export default function CardsComponent() {
   const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch()
-  // const {moviesParam} = useParams()
-  // const [page, search] = moviesParam.split("--");
+  const { searchQuery } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMovies())
-    setLoading(false)
+    console.log(searchQuery);
+    if (searchQuery) {
+      dispatch(getMovies(searchQuery));
+      setLoading(false);
+    } else {
+      dispatch(getMovies());
+      setLoading(false);
+    }
   }, []);
 
   const openModal = useSelector(state => state.openModal)
-  // console.log(param);
   const selectedMovie = useSelector(state => state.selectedMovie)
 
   return (
@@ -32,7 +35,7 @@ export default function CardComponent() {
         <p>Wait for Content ...</p>
       ) : (
         <div>
-          <Card />
+          <Cards />
 
           {openModal && selectedMovie && (
             <ModalDetailMovie />
