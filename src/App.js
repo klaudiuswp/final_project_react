@@ -1,14 +1,23 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import {
-  NavbarComponent,
-  MainComponent
+  NavbarComponent
 } from './components';
+import {
+  MainPage,
+  MoviesPage,
+  MovieDetailPage
+} from './pages';
 
 function App() {
   return (
     <div className="App">
-      <NavbarComponent/>
-      <MainComponent/>
+      <Routes>
+        <Route path='/' element={<MainPage />}>
+          <Route path='movies?/:filter' element={<MoviesPage />} />
+          <Route path='movie/:id' element={<MovieDetailPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
