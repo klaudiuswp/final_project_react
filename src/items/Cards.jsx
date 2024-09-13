@@ -23,7 +23,7 @@ export default function Cards() {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
                 {movies.length === 0 ? (
                     <div className="col w-100 d-flex justify-content-center align-items-center">
-                        <p className="text-center">Movie tidak ditemukkan</p>
+                        <p className="text-center">Please Wait ...</p>
                     </div>
                 ) : movies.Search.map((movie) => (
                     <button

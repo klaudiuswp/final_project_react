@@ -6,7 +6,8 @@ import {
     useDispatch
 } from 'react-redux'
 import {
-    changeMovie
+    changeMovie,
+    closeModal
 } from "../store/action";
 
 const MainComponent = () => {
@@ -14,12 +15,18 @@ const MainComponent = () => {
     const dispatch = useDispatch()
     const param = useParams()
 
+    dispatch(closeModal())
+
     if (selectedMovie.length == 0) {
         dispatch(changeMovie(param.id))
     }
 
     const renderDetail = (label, value) => value ? (
-        <p className="card-text"><strong>{label}:</strong> {value}</p>
+        // <p className="card-text text-start">▻  <strong>{label}:</strong> {value}</p>
+        <>
+            <dt className="col-xl-2 col-md-4 col-3 text-start">{label}</dt>
+            <dd className="col-xl-10 col-lg-9 col-md-8 col-9 text-start">{value}</dd>
+        </>
     ) : null;
 
     return (
@@ -34,7 +41,18 @@ const MainComponent = () => {
                                         <div className="card-body d-flex flex-column align-items-center bg-dark-subtle">
                                             <img src={selectedMovie.Poster} className="card-img-top mb-3" alt="Profile Picture" />
                                             <h3 className="card-title">{selectedMovie.Title}</h3>
-                                            <p className="text-muted">{selectedMovie.Genre}</p>
+                                            <p className="text-muted mb-0">{selectedMovie.Genre}</p>
+                                            <p className="text-muted mb-2">{selectedMovie.Released}</p>
+                                            <div className="w-100">
+                                                <div className="row justify-content-center">
+                                                    <div className="col-4 px-0">
+                                                        <p className="text-muted mb-2"><span className="badge text-bg-primary text-wrap">{selectedMovie.Rated}</span></p>
+                                                    </div>
+                                                    <div className="col-4 px-0">
+                                                        <p className="text-muted mb-2"><span className="badge text-bg-warning text-wrap">{selectedMovie.Runtime}</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             {/* <div className="d-flex gap-2">
                                                 <button type="button" className="btn btn-primary">Follow</button>
                                                 <button type="button" className="btn btn-outline-secondary">Message</button>
@@ -47,24 +65,20 @@ const MainComponent = () => {
                                         <div className="card-header text-white" style={{ backgroundColor: 'rgba(251, 67, 0, 1)' }}>
                                             <h4 className="m-0">Movie Details</h4>
                                         </div>
-                                        <div className="card-body bg-dark-subtle">
-                                            <p className="card-text">{selectedMovie.Plot}</p>
-                                        </div>
                                         <div>
                                             <div className="card-body  bg-dark-subtle">
+
                                                 <p className="card-text">{selectedMovie.Plot}</p>
-                                                {renderDetail('Year', selectedMovie.Year)}
-                                                {renderDetail('Rated', selectedMovie.Rated)}
-                                                {renderDetail('Released', selectedMovie.Released)}
-                                                {renderDetail('Runtime', selectedMovie.Runtime)}
-                                                {renderDetail('Genre', selectedMovie.Genre)}
-                                                {renderDetail('Director', selectedMovie.Director)}
-                                                {renderDetail('Writers', selectedMovie.Writer)}
-                                                {renderDetail('Actors', selectedMovie.Actors)}
-                                                {renderDetail('Language', selectedMovie.Language)}
-                                                {renderDetail('Country', selectedMovie.Country)}
-                                                {renderDetail('Awards', selectedMovie.Awards)}
-                                                {renderDetail('Box Office', selectedMovie.BoxOffice)}
+                                                <dl className="row">
+                                                    {renderDetail('Director', selectedMovie.Director)}
+                                                    {renderDetail('Writers', selectedMovie.Writer)}
+                                                    {renderDetail('Actors', selectedMovie.Actors)}
+                                                    {renderDetail('Language', selectedMovie.Language)}
+                                                    {renderDetail('Country', selectedMovie.Country)}
+                                                    {renderDetail('Awards', selectedMovie.Awards)}
+                                                    {renderDetail('Box Office', selectedMovie.BoxOffice)}
+
+                                                </dl>
                                             </div>
                                         </div>
                                     </div>

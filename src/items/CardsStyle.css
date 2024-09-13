@@ -1,11 +1,11 @@
 .card-button:hover .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
-    transform: scale(1.02); /* Slightly enlarge the card */
-    transition: all 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    transform: scale(1.02); 
+    transition: all 0.3s ease; 
 }
 
 .card-button:hover .card-img-top {
-    filter: brightness(1.1); /* Brighten the image */
+    filter: brightness(1.1); 
 }
 
 /* Media queries for responsive design */
@@ -21,8 +21,14 @@
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199px) {
     .responsive-height {
-        height: 230px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .responsive-height {
+        height: 330px;
     }
 }
