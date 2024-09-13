@@ -20,8 +20,8 @@ const MovieDetailComponent = () => {
 
     const renderDetail = (label, value) => value ? (
         <>
-            <dt className="col-xl-2 col-md-4 col-3 text-start">{label}</dt>
-            <dd className="col-xl-10 col-lg-9 col-md-8 col-9 text-start">{value}</dd>
+            <dt className="col-xl-2 col-lg-3 col-4 text-start">{label}</dt>
+            <dd className="col-xl-10 col-lg-9 col-8 text-start">{value}</dd>
         </>
     ) : null;
 
