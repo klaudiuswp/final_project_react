@@ -37,7 +37,7 @@ export default function ModalDetailMovie() {
                             <p className="m-0"><strong>Plot:</strong> {selectedMovie.Plot}</p>
                         </div>
                         <div className="modal-footer bg-body-secondary">
-                            <Link to={`/movie/${selectedMovie.imdbID}`} className="btn btn-primary w-100">Check Movie</Link>
+                            <Link to={`/movie/${selectedMovie.imdbID}`} onClick={handleCloseModal} className="btn btn-primary w-100">Check Movie</Link>
                             <button type="button" className="btn btn-danger w-100" onClick={handleCloseModal}>
                                 Close
                             </button>

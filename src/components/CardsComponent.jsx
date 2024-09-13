@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ModalDetailMovie from '../items/ModalDetailMovie'
 import getMovies from "../store/action";
 import Cards from '../items/Cards'
@@ -11,7 +11,6 @@ import {
 } from "react-router-dom";
 
 export default function CardsComponent() {
-  const [loading, setLoading] = useState(true);
   const { searchQuery } = useParams();
   const dispatch = useDispatch();
 
@@ -19,10 +18,8 @@ export default function CardsComponent() {
     console.log(searchQuery);
     if (searchQuery) {
       dispatch(getMovies(searchQuery));
-      setLoading(false);
     } else {
       dispatch(getMovies());
-      setLoading(false);
     }
   }, []);
 
@@ -31,17 +28,13 @@ export default function CardsComponent() {
 
   return (
     <>
-      {loading ? (
-        <p>Wait for Content ...</p>
-      ) : (
-        <div>
-          <Cards />
+      <div>
+        <Cards />
 
-          {openModal && selectedMovie && (
-            <ModalDetailMovie />
-          )}
-        </div>
-      )}
+        {openModal && selectedMovie && (
+          <ModalDetailMovie />
+        )}
+      </div>
     </>
   );
 }

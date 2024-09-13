@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 const NavbarComponent = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
-  
+
     const handleSearch = (event) => {
-      event.preventDefault();
-      if (searchQuery) {
-        navigate(`/movies/${searchQuery}`);
-      }
+        event.preventDefault();
+        if (searchQuery) {
+            navigate(`/movies/${searchQuery}`);
+        }
     };
 
     return (
@@ -25,7 +25,10 @@ const NavbarComponent = () => {
                         <div className="d-flex justify-content-lg-end justify-content-center text-light w-100">
                             <form className="d-flex" onSubmit={handleSearch}>
                                 <div className="input-group input-group-sm">
-                                    <input type="text" className="form-control bg-secondary-emphasis" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                                    <input 
+                                    type="text" className="form-control bg-secondary-emphasis" 
+                                    placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2" 
+                                    value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                                     <button className="btn btn-dark" type="submit" id="button-addon2">SEARCH</button>
                                 </div>
                             </form>

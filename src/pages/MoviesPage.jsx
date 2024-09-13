@@ -1,7 +1,7 @@
 
 import {
     CardsComponent,
-    PaginationComponent
+    // PaginationComponent
 } from '../components';
 
 export default function MoviesPage() {

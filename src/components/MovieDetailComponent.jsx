@@ -7,22 +7,18 @@ import {
 } from 'react-redux'
 import {
     changeMovie,
-    closeModal
 } from "../store/action";
 
-const MainComponent = () => {
+const MovieDetailComponent = () => {
     const selectedMovie = useSelector(state => state.selectedMovie)
     const dispatch = useDispatch()
     const param = useParams()
 
-    dispatch(closeModal())
-
-    if (selectedMovie.length == 0) {
+    if (selectedMovie.length === 0) {
         dispatch(changeMovie(param.id))
     }
 
     const renderDetail = (label, value) => value ? (
-        // <p className="card-text text-start">▻  <strong>{label}:</strong> {value}</p>
         <>
             <dt className="col-xl-2 col-md-4 col-3 text-start">{label}</dt>
             <dd className="col-xl-10 col-lg-9 col-md-8 col-9 text-start">{value}</dd>
@@ -39,7 +35,7 @@ const MainComponent = () => {
                                 <div className="col-md-4">
                                     <div className="card mb-4">
                                         <div className="card-body d-flex flex-column align-items-center bg-dark-subtle">
-                                            <img src={selectedMovie.Poster} className="card-img-top mb-3" alt="Profile Picture" />
+                                            <img src={selectedMovie.Poster} className="card-img-top mb-3" alt={selectedMovie.Title} />
                                             <h3 className="card-title">{selectedMovie.Title}</h3>
                                             <p className="text-muted mb-0">{selectedMovie.Genre}</p>
                                             <p className="text-muted mb-2">{selectedMovie.Released}</p>
@@ -123,4 +119,4 @@ const MainComponent = () => {
     );
 }
 
-export default MainComponent;
+export default MovieDetailComponent;
