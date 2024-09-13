@@ -16,6 +16,11 @@ export default function CardsComponent() {
 
   useEffect(() => {
     console.log(searchQuery);
+    // if (searchQuery) {
+    //   dispatch(getMovies(searchQuery));
+    // } else {
+    //   dispatch(getMovies());
+    // }
     dispatch(getMovies(searchQuery))
   }, [dispatch,searchQuery]);
 
