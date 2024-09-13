@@ -1,7 +1,6 @@
 
 import {
     CardsComponent,
-    // PaginationComponent
 } from '../components';
 
 export default function MoviesPage() {
@@ -9,7 +8,6 @@ export default function MoviesPage() {
         <>
             <div className="container mt-5 mx-auto">
                 <CardsComponent />
-                {/* <PaginationComponent /> */}
             </div>
         </>
     )
