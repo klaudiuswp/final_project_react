@@ -16,12 +16,8 @@ export default function CardsComponent() {
 
   useEffect(() => {
     console.log(searchQuery);
-    if (searchQuery) {
-      dispatch(getMovies(searchQuery));
-    } else {
-      dispatch(getMovies());
-    }
-  }, []);
+    dispatch(getMovies(searchQuery))
+  }, [searchQuery]);
 
   const openModal = useSelector(state => state.openModal)
   const selectedMovie = useSelector(state => state.selectedMovie)
