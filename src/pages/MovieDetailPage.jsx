@@ -6,7 +6,7 @@ import {
 export default function MovieDetailPage() {
     return (
         <>
-            <div className="container mt-5 mx-auto">
+            <div className="container mt-5 mx-auto"  style={{ minHeight: '82vh' }}>
                 <MovieDetailComponent />
             </div>
         </>

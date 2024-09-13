@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export default function getMovies(keyword = 'man') {
+export default function getMovies(keyword = 'man', page = 1) {
     return (dispatch) => {
         const apiKey = process.env.REACT_APP_OMDB_API_KEY;
         axios
-            .get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${keyword}`)
+            .get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${keyword}&page=${page}`)
             .then((response) => {
                 console.log(response,"==>CALL API");
                 dispatch(

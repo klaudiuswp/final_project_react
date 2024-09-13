@@ -41,6 +41,10 @@ export default function Cards() {
                                         className="card-img-top img-fluid"
                                         alt={movie.Title}
                                         style={{ objectFit: "cover", height: "100%" }}
+                                        onError={(e) => {
+                                            e.target.onerror = null; 
+                                            e.target.src = "/No-Image-Placeholder.svg";
+                                        }}
                                     />
                                 </div>
                                 <div className="card-img-overlay p-0" style={{ height: '100%' }}>

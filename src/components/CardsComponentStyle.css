@@ -1,0 +1,29 @@
+.pagination-dark {
+    border-radius: .25rem;
+    width: auto;
+}
+
+.pagination-dark .page-item .page-link {
+    color: #ffffff;
+    background-color: #343a40;
+    border-color: #495057;
+}
+
+.pagination-dark .page-item.active .page-link {
+    color: #ffffff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination-dark .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #343a40;
+    border-color: #343a40;
+    cursor: not-allowed;
+}
+
+.pagination-dark .page-link:hover {
+    background-color: #495057;
+    color: #ffffff;
+    border-color: #6c757d;
+}

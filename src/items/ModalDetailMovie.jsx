@@ -31,6 +31,10 @@ export default function ModalDetailMovie() {
                                 className="img-fluid"
                                 alt={selectedMovie.Title}
                                 style={{ height: "180px" }}
+                                onError={(e) => {
+                                    e.target.onerror = null; 
+                                    e.target.src = "/No-Image-Placeholder.svg";
+                                }}
                             />
                             <p className="m-0 mt-3"><strong>Year:</strong> {selectedMovie.Year}</p>
                             <p className="m-0"><strong>Genre:</strong> {selectedMovie.Genre}</p>

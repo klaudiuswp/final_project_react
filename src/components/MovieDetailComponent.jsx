@@ -35,7 +35,11 @@ const MovieDetailComponent = () => {
                                 <div className="col-md-4">
                                     <div className="card mb-4">
                                         <div className="card-body d-flex flex-column align-items-center bg-dark-subtle">
-                                            <img src={selectedMovie.Poster} className="card-img-top mb-3" alt={selectedMovie.Title} />
+                                            <img src={selectedMovie.Poster} className="card-img-top mb-3" alt={selectedMovie.Title} 
+                                            onError={(e) => {
+                                                e.target.onerror = null; 
+                                                e.target.src = "/No-Image-Placeholder.svg";
+                                            }}/>
                                             <h3 className="card-title">{selectedMovie.Title}</h3>
                                             <p className="text-muted mb-0">{selectedMovie.Genre}</p>
                                             <p className="text-muted mb-2">{selectedMovie.Released}</p>
@@ -49,10 +53,6 @@ const MovieDetailComponent = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* <div className="d-flex gap-2">
-                                                <button type="button" className="btn btn-primary">Follow</button>
-                                                <button type="button" className="btn btn-outline-secondary">Message</button>
-                                            </div> */}
                                         </div>
                                     </div>
                                 </div>

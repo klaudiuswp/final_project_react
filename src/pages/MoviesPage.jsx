@@ -1,6 +1,6 @@
 
 import {
-    CardsComponent,
+    CardsComponent
 } from '../components';
 
 export default function MoviesPage() {
